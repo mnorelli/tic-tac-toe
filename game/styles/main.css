@@ -37,3 +37,13 @@ body {
   z-index: 0;
   color: white;
 }
+div.hr {
+  background: #fff  no-repeat scroll center;
+  margin-left: 0;
+  width:20em;
+  height: 2px;
+}
+
+/*div.hr hr {
+  display: none;
+}*/

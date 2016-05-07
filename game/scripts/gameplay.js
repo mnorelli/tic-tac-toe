@@ -1,6 +1,6 @@
 window.onload = function() {
 
-Pseudo code:
+//Pseudo code:
 
 // SETUP
 
