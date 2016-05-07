@@ -1,5 +1,12 @@
-/*  overlapping div idea from http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div  */
-/*  is it okay just to use IDs unnested?  */
+/*
+  SOURCES  
+  overlapping div idea from http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div  
+  mix-blend-mode from https://css-tricks.com/basics-css-blend-modes/
+
+  QUESTIONS  
+  is it okay to just use IDs unnested? Or better practice to specify "div #id" etc.? 
+
+*/
 
 body {
   font-family: 'Indie Flower', cursive;
@@ -31,19 +38,9 @@ body {
   z-index: -1;
 }
 #grid {
-  /*display: none;*/
+  display: none;
   background-color: rgba(0,0,255,0.5);
   mix-blend-mode: multiply;
   z-index: 0;
   color: white;
 }
-div.hr {
-  background: #fff  no-repeat scroll center;
-  margin-left: 0;
-  width:20em;
-  height: 2px;
-}
-
-/*div.hr hr {
-  display: none;
-}*/
