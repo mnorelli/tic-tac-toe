@@ -4,6 +4,7 @@
   grid divs from http://stackoverflow.com/questions/21014209/how-do-i-make-a-grid-with-html-and-css-with-divs
   drop shadow from http://stackoverflow.com/questions/860972/drop-shadow-on-a-div-container
   image from http://justmytype.ca/mistakes-will-make-you-or-break-you/
+  text shadow from http://css3gen.com/text-shadow/
 
   QUESTIONS  
   is it okay to just use IDs unnested? Or better practice to specify "div #id" etc 
@@ -17,10 +18,19 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -2;
+  text-align: center;
 }
 #title {
-  margin: 20px;
-  text-align: center;
+  margin-top: 10px;
+  font-size: 60px;
+  font-weight: 900;
+}
+#subtitle {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+  font-size: 40pt;
+  color: red;
 }
 #playspace {
   width: 500px;
@@ -52,9 +62,6 @@ body {
   margin-top: 12%;    /* shim */
   height: 88%;       /* shim */
 
-}
-.toprow {
-  
 }
 .cell {
   /*border: 1px solid white;*/
