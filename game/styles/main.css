@@ -1,17 +1,21 @@
 /*
   SOURCES  
   overlapping div idea from http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div  
-  mix-blend-mode from https://css-tricks.com/basics-css-blend-modes/
+  grid divs from http://stackoverflow.com/questions/21014209/how-do-i-make-a-grid-with-html-and-css-with-divs
+  drop shadow from http://stackoverflow.com/questions/860972/drop-shadow-on-a-div-container
 
   QUESTIONS  
-  is it okay to just use IDs unnested? Or better practice to specify "div #id" etc.? 
+  is it okay to just use IDs unnested? Or better practice to specify "div #id" etc 
 
 */
 
 body {
   font-family: 'Indie Flower', cursive;
   font-size: 20pt;
-  background-color: #3a6;
+  /*background: url(../images/chalk_van_gough_quote.jpg) #222;*/
+  background: url(../images/purple-green-and-orange-pieces-of-chalk.jpg) #222;
+  /*background-position: top left;*/
+  background-size: cover;
   z-index: -2;
 }
 #title {
@@ -24,13 +28,15 @@ body {
   margin: auto;
   /*background-color: #163;*/
   position: relative;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 30px 5px #999;
+  -webkit-box-shadow: 0 0 30px 5px #999;
 }
 .space {
   width: 100%;
   height: 100%;
   position: absolute;
   top, left: 0;
-  mix-blend-mode: multiply;
 }
 #chalkboard {
   /*display: none;*/
@@ -38,9 +44,27 @@ body {
   z-index: -1;
 }
 #grid {
-  display: none;
-  background-color: rgba(0,0,255,0.5);
-  mix-blend-mode: multiply;
+  /*display: none;*/
   z-index: 0;
   color: white;
+  padding-left: 6%;  /* shim to align with non-square grid */ 
+  width: 94%;        /* shim */
+  margin-top: 12%;    /* shim */
+  height: 88%;       /* shim */
+
+}
+.toprow {
+  
+}
+.cell {
+  /*border: 1px solid white;*/
+  width: 30%;
+  height: 29%;
+  margin: 1% 1.25%;
+  float: left;
+  text-align: center;
+  font-size: 400%;
+}
+#i {
+  padding-left: 1%;   /* shim to align with non-square grid */ 
 }
