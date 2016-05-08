@@ -73,7 +73,8 @@ img {
   margin: 1% 1.25%;
   float: left;
   text-align: center;
-  font-size: 400%;
+  font-size: 500%;
+  font-weight: 900;
 }
 #i {
   padding-left: 1%;   /* shim to align with non-square grid */ 

@@ -57,17 +57,23 @@ function markCell(loc,player) {
   var content = cell.textContent;
   if (content === "") {                 // if the cell is empty
     cell.textContent = player;          // display the player ltr in the cell
+    cell.style.color = playerColor;
     positions[loc] = player;              // update the logic array
     cell.style.pointerEvents = 'none';  // turn off further cell clicks
   }
-  console.log(positions);
   if (winner()) endGame();
   alternatePlayer();                  // switch the player
 }
 
 // player switching
 function alternatePlayer() {
-  (player==='X') ? player='O' : player='X'
+  if (player==='X') {
+    player='O';
+    playerColor = "orange";
+    } else {
+    player='X';
+    playerColor = "lightgreen";
+    }
 }
 
 // clears the board and empties the cell tracking array
@@ -105,12 +111,13 @@ function endGame(){
   document.querySelector("#message").textContent = player+" WINS!!";
   var allCells = getAllCells();
   for (i=0;i<allCells.length;i+=1) {
-    allCells[i].style.pointerEvents = 'none'
+    allCells[i].style.pointerEvents = 'none';
   }
 }
 
 //  set up the board
 var player = 'X';
+var playerColor = "lightgreen";
 addListeners();
 clearBoard();
 
