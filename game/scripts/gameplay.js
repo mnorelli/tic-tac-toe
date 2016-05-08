@@ -51,12 +51,18 @@ function getAllCells(){
   return allCells;
 }
 
-// mark the current player value in the specified cell
+// mark the current player value in the specified cell and switches player
 function markCell(loc,player) {   
   var cell  = document.querySelector("#"+loc);
   var content = cell.textContent;
   if (content === "") {cell.textContent = player;}
-  return content;
+  alternatePlayer();
+  cell.style.pointerEvents = 'none';
+}
+
+// player switching
+function alternatePlayer() {
+  (player==='X') ? player='O' : player='X'
 }
 
 // clears the board and empties the cell tracking array
