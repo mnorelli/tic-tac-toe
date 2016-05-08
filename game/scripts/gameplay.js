@@ -55,9 +55,14 @@ function getAllCells(){
 function markCell(loc,player) {   
   var cell  = document.querySelector("#"+loc);
   var content = cell.textContent;
-  if (content === "") {cell.textContent = player;}
-  alternatePlayer();
-  cell.style.pointerEvents = 'none';
+  if (content === "") {                 // if the cell is empty
+    cell.textContent = player;          // display the player ltr in the cell
+    positions[loc] = player;              // update the logic array
+    cell.style.pointerEvents = 'none';  // turn off further cell clicks
+  }
+  console.log(positions);
+  if (winner()) endGame();
+  alternatePlayer();                  // switch the player
 }
 
 // player switching
@@ -96,13 +101,64 @@ function addListeners(){
   return allCells;
 }
 
+function endGame(){
+  document.querySelector("#message").textContent = player+" WINS!!";
+  var allCells = getAllCells();
+  for (i=0;i<allCells.length;i+=1) {
+    allCells[i].style.pointerEvents = 'none'
+  }
+}
+
 //  set up the board
-var player = 'O';
+var player = 'X';
 addListeners();
 clearBoard();
 
 
-};
+//  ********************
+//  ***  GAME LOGIC  ***
+//  ********************
+
+  var positions = {a:null,b:null,c:null,
+                  d:null,e:null,f:null,
+                  g:null,h:null,i:null};
+
+function winner(){
+    if (won('O')) var victor = 'O';
+    if (won('X')) var victor = 'X';
+    return victor;
+}
+
+function won(player){
+    return (winRow(player)||winCol(player)||winDiag(player));   
+}
+
+function winRow(player) {
+    return (three(player,'a','b','c')||
+            three(player,'d','e','f')||
+            three(player,'g','h','i'));
+}
+
+function winCol(player) {
+    return (three(player,'a','d','g')||
+            three(player,'b','e','h')||
+            three(player,'c','f','i'));
+}
+
+function winDiag(player) {
+    return (three(player,'a','e','i')||
+            three(player,'g','e','c'));
+}
+
+function three(player,cell1,cell2,cell3){
+    return (positions[cell1]==player&&
+            positions[cell2]==player&&
+            positions[cell3]==player);
+}
+
+
+
+};   // end of onLoad funtion
 
 
 
