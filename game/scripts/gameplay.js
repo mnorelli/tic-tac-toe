@@ -45,15 +45,19 @@ GRID SETUP
 
 console.log("Linked!");
 
-var cells = ["a","b","c","d","e","f","g","h","i"];
-
 function getAllCells(){
   var allCells = document.querySelectorAll('.cell');
   return allCells;
 }
 
+function markCell(loc,player) {
+  var cell  = document.querySelector("#"+loc);
+  var content = cell.textContent;
+  if (content === "") {cell.textContent = player;}
+  return content;
+}
+
 function clearBoard(){
-  currentPlayer = "X"
   var positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
                   g:null,h:null,i:null};
@@ -64,22 +68,34 @@ function clearBoard(){
   return positions;
 }
 
+function addListeners(){
+  var allCells = getAllCells();
+  for (i=0;i<allCells.length;i+=1) {
+    var id = allCells[0].getAttribute('id');
+    allCells[i].addEventListener("click",markCell(id,player));
+  }
+  return allCells;
+}
+
+var player = 'X';
 clearBoard();
 
-function addListeners(){
-  cells.forEach(function(cell){
-    var loc = document.querySelection("#"+cell);
-    loc.addEventListener("click",
-
-  })
 
 };
 
-function markCell(loc) {
-  var cell  = document.querySelection("#"+loc);
-  var content = cell.textContent;
-  (content === "") ? content = player
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
