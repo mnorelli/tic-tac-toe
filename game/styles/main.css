@@ -3,6 +3,7 @@
   overlapping div idea from http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div  
   grid divs from http://stackoverflow.com/questions/21014209/how-do-i-make-a-grid-with-html-and-css-with-divs
   drop shadow from http://stackoverflow.com/questions/860972/drop-shadow-on-a-div-container
+  image from http://justmytype.ca/mistakes-will-make-you-or-break-you/
 
   QUESTIONS  
   is it okay to just use IDs unnested? Or better practice to specify "div #id" etc 
@@ -12,10 +13,9 @@
 body {
   font-family: 'Indie Flower', cursive;
   font-size: 20pt;
-  /*background: url(../images/chalk_van_gough_quote.jpg) #222;*/
   background: url(../images/purple-green-and-orange-pieces-of-chalk.jpg) #222;
-  /*background-position: top left;*/
   background-size: cover;
+  background-repeat: no-repeat;
   z-index: -2;
 }
 #title {
@@ -67,4 +67,10 @@ body {
 }
 #i {
   padding-left: 1%;   /* shim to align with non-square grid */ 
+}
+
+@media (max-width: 1600px) {
+body {
+  background-position: top left;
+  background-size: auto;
 }
