@@ -45,18 +45,21 @@ GRID SETUP
 
 console.log("Linked!");
 
-function getAllCells(){
+// shortcut for getting all the game cells
+function getAllCells(){   
   var allCells = document.querySelectorAll('.cell');
   return allCells;
 }
 
-function markCell(loc,player) {
+// mark the current player value in the specified cell
+function markCell(loc,player) {   
   var cell  = document.querySelector("#"+loc);
   var content = cell.textContent;
   if (content === "") {cell.textContent = player;}
   return content;
 }
 
+// clears the board and empties the cell tracking array
 function clearBoard(){
   var positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
@@ -68,16 +71,28 @@ function clearBoard(){
   return positions;
 }
 
+// crazy magic needed because you can't set a markCell function 
+// on a click handler without it firing immediatey
+function makeClickHandler(id) {  
+    "use strict";
+    return function() {
+        markCell(id, player);
+    };
+}
+
+// set up all the cells with a listener to assign the play to the clicked cell
 function addListeners(){
   var allCells = getAllCells();
   for (i=0;i<allCells.length;i+=1) {
-    var id = allCells[0].getAttribute('id');
-    allCells[i].addEventListener("click",markCell(id,player));
+    var id = allCells[i].getAttribute('id');
+    allCells[i].addEventListener("click",makeClickHandler(id,player));
   }
   return allCells;
 }
 
-var player = 'X';
+//  set up the board
+var player = 'O';
+addListeners();
 clearBoard();
 
 
