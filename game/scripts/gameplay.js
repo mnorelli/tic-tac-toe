@@ -78,9 +78,11 @@ function alternatePlayer() {
   if (player==='X') {
     player='O';
     playerColor = "orange";
+    x_sound.play();
     } else {
     player='X';
     playerColor = "lightgreen";
+    o_sound.play();
     }
   say(player+"'s turn...",playerColor); 
 }
@@ -127,6 +129,7 @@ function endGame(){
   for (i=0;i<allCells.length;i+=1) {
     allCells[i].style.pointerEvents = 'none';
   }
+  clap_sound.play();
   addReset();
 }
 
@@ -146,6 +149,9 @@ function addReset(){
 //  set up the board
 function startGame(){
   clearBoard();
+  x_sound = new Audio('sounds/x_sound.mp3');
+  o_sound = new Audio('sounds/o_sound.mp3');
+  clap_sound = new Audio('sounds/68698__mikaelfernstrom__handclap.wav');
   addListeners();
 }
 
