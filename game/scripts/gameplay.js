@@ -62,6 +62,7 @@ function markCell(loc,player) {
     cell.style.pointerEvents = 'none';  // turn off further cell clicks
   }
   if (winner()) endGame();
+    else if (tie()) tieGame();
   alternatePlayer();                  // switch the player
 }
 
@@ -115,6 +116,10 @@ function endGame(){
   }
 }
 
+function tieGame(){
+  document.querySelector("#message").textContent = "It's a TIE!!";
+}
+
 //  set up the board
 var player = 'X';
 var playerColor = "lightgreen";
@@ -129,6 +134,16 @@ clearBoard();
   var positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
                   g:null,h:null,i:null};
+
+// return "true" if all the positions are not null, i.e. board is filled
+// and there is no winner
+function tie() {
+    var check = true;
+    for (var key in positions) { 
+        if (positions[key] === null) check = false;
+    }
+    return check;
+}
 
 function winner(){
     if (won('O')) var victor = 'O';
