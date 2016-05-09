@@ -51,8 +51,15 @@ function getAllCells(){
   return allCells;
 }
 
+// shortcut for changing the message at top
+function say(status,color){
+  var msg = document.querySelector("#message");
+  msg.textContent = status;
+  msg.style.color = color;
+}
+
 // mark the current player value in the specified cell and switches player
-function markCell(loc,player) {   
+function markCell(loc,player) {  
   var cell  = document.querySelector("#"+loc);
   var content = cell.textContent;
   if (content === "") {                 // if the cell is empty
@@ -63,7 +70,7 @@ function markCell(loc,player) {
   }
   if (winner()) endGame();
     else if (tie()) tieGame();
-  alternatePlayer();                  // switch the player
+    else alternatePlayer();                  // switch the player
 }
 
 // player switching
@@ -75,9 +82,10 @@ function alternatePlayer() {
     player='X';
     playerColor = "lightgreen";
     }
+  say(player+"'s turn...",playerColor); 
 }
 
-// clears the board and empties the cell tracking array
+// clears the board and empties the cell tracking object
 function clearBoard(){
   var positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
@@ -109,7 +117,7 @@ function addListeners(){
 }
 
 function endGame(){
-  document.querySelector("#message").textContent = player+" WINS!!";
+  say(player+" WINS!!",'red');
   var allCells = getAllCells();
   for (i=0;i<allCells.length;i+=1) {
     allCells[i].style.pointerEvents = 'none';
@@ -117,7 +125,7 @@ function endGame(){
 }
 
 function tieGame(){
-  document.querySelector("#message").textContent = "It's a TIE!!";
+  say("It's a tie...","white");
 }
 
 //  set up the board
@@ -125,7 +133,7 @@ var player = 'X';
 var playerColor = "lightgreen";
 addListeners();
 clearBoard();
-
+setTimeout(function(){say("X goes first!","lightgreen");},1500);
 
 //  ********************
 //  ***  GAME LOGIC  ***
