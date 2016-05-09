@@ -68,9 +68,9 @@ function markCell(loc,player) {
     positions[loc] = player;              // update the logic array
     cell.style.pointerEvents = 'none';  // turn off further cell clicks
   }
-  if (winner()) endGame();
-    else if (tie()) tieGame();
-    else alternatePlayer();                  // switch the player
+  if (winner()) {endGame()}
+    else if (tie()) {tieGame()}
+    else {alternatePlayer()}                 // switch the player
 }
 
 // player switching
@@ -87,14 +87,19 @@ function alternatePlayer() {
 
 // clears the board and empties the cell tracking object
 function clearBoard(){
-  var positions = {a:null,b:null,c:null,
+  positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
                   g:null,h:null,i:null};
   var allCells = getAllCells();
   for (i=0;i<allCells.length;i+=1) {
     allCells[i].textContent='';
+    allCells[i].removeAttribute("color");
+    allCells[i].style.pointerEvents = 'all';
   }
-  return positions;
+  say("Get ready to play...","red");
+  setTimeout(function(){say("X goes first!","lightgreen");},1500);
+  player = 'X';
+  playerColor = "lightgreen";
 }
 
 // crazy magic needed because you can't set a markCell function 
@@ -122,26 +127,33 @@ function endGame(){
   for (i=0;i<allCells.length;i+=1) {
     allCells[i].style.pointerEvents = 'none';
   }
+  addReset();
 }
 
 function tieGame(){
   say("It's a tie...","white");
 }
 
+function addReset(){
+  var msg = document.querySelector("#message");
+  var btnReset = document.createElement("img");
+  btnReset.src = 'images/reset-button-th.png';
+  btnReset.id = 'reset';
+  btnReset.addEventListener("click",clearBoard);
+  msg.appendChild(btnReset);
+}
+
 //  set up the board
-var player = 'X';
-var playerColor = "lightgreen";
-addListeners();
-clearBoard();
-setTimeout(function(){say("X goes first!","lightgreen");},1500);
+function startGame(){
+  clearBoard();
+  addListeners();
+}
+
+startGame();
 
 //  ********************
 //  ***  GAME LOGIC  ***
 //  ********************
-
-  var positions = {a:null,b:null,c:null,
-                  d:null,e:null,f:null,
-                  g:null,h:null,i:null};
 
 // return "true" if all the positions are not null, i.e. board is filled
 // and there is no winner
