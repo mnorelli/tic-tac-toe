@@ -135,6 +135,7 @@ function endGame(){
 
 function tieGame(){
   say("It's a tie...","white");
+  addReset();
 }
 
 function addReset(){
