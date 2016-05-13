@@ -2,19 +2,19 @@ window.onload = function() {
 
   console.log("Linked!");
 
-  function Game(board){
-    var this.board = board;
+  function Game(){
     var playerX = new Player("X","lightgreen");
     var playerO = new Player("O","orange");
 
   }
 
   Game.prototype = {
-    winner: function(player){
-      if ( won(player) ) {
-        message(player + "won!");
-        this.winner = player;
+    winner: function(){
+      if (won()!==null&&) {
+        message(won() + "won!");
+        Game.winner = won();
         }
+      return player
     },
     update: function(){
       // allow players to play
@@ -36,6 +36,22 @@ window.onload = function() {
       msg.textContent = status;
       msg.style.color = color;
     }
+
+    // check for win condition
+    var won = function() {
+      // logivc
+      return player;
+
+    }
+
+    this.reset();
+
+    var self = this
+
+    while (self.winner()==false) {
+        self.update();
+      }
+
   }
 
   function Player(letter, color){
@@ -83,7 +99,7 @@ window.onload = function() {
   }
 
 
-
+new Game();
 
 
 
