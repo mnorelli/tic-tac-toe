@@ -1,5 +1,5 @@
 window.onload = function() {
-  startGame();
+  clearBoard();
 }; 
 /*
 
@@ -45,6 +45,9 @@ GRID SETUP
 */
 
 console.log("Linked!");
+x_sound = new Audio('sounds/x_sound.mp3');
+o_sound = new Audio('sounds/o_sound.mp3');
+clap_sound = new Audio('sounds/68698__mikaelfernstrom__handclap.wav');
 
 // shortcut for getting all the game cells
 function getAllCells(){   
@@ -60,13 +63,14 @@ function say(status,color){
 }
 
 // mark the current player value in the specified cell and switches player
-function markCell(loc,player) {  
-  var cell  = document.querySelector("#"+loc);
+function markCell(e) {  
+  var cell  = e.target
+  console.log("target: ",cell)
   var content = cell.textContent;
   if (content === "") {                 // if the cell is empty
     cell.textContent = player;          // display the player ltr in the cell
     cell.style.color = playerColor;
-    positions[loc] = player;              // update the logic array
+    positions[cell.id] = player;              // update the logic array
     cell.style.pointerEvents = 'none';  // turn off further cell clicks
   }
   if (winner()) {endGame()}
@@ -76,52 +80,36 @@ function markCell(loc,player) {
 
 // player switching
 function alternatePlayer() {
+  console.log("before alternate: "+player);
   if (player==='X') {
     player='O';
     playerColor = "orange";
     x_sound.play();
-    } else {
+  } else {
     player='X';
     playerColor = "lightgreen";
     o_sound.play();
     }
   say(player+"'s turn...",playerColor); 
+  console.log("after alternate: "+player);
 }
 
-// clears the board and empties the cell tracking object
+// sets up the board and empties the cell tracking object
 function clearBoard(){
   positions = {a:null,b:null,c:null,
                   d:null,e:null,f:null,
                   g:null,h:null,i:null};
+  player = 'X';
+  playerColor = "lightgreen";
   var allCells = getAllCells();
   for (i=0;i<allCells.length;i+=1) {
     allCells[i].textContent='';
     allCells[i].removeAttribute("color");
+    allCells[i].addEventListener("click",markCell);
     allCells[i].style.pointerEvents = 'all';
   }
   say("Get ready to play...","red");
   setTimeout(function(){say("X goes first!","lightgreen");},1500);
-  player = 'X';
-  playerColor = "lightgreen";
-}
-
-// crazy magic needed because you can't set a markCell function 
-// on a click handler without it firing immediatey
-function makeClickHandler(id) {  
-    "use strict";
-    return function() {
-        markCell(id, player);
-    };
-}
-
-// set up all the cells with a listener to assign the play to the clicked cell
-function addListeners(){
-  var allCells = getAllCells();
-  for (i=0;i<allCells.length;i+=1) {
-    var id = allCells[i].getAttribute('id');
-    allCells[i].addEventListener("click",makeClickHandler(id,player));
-  }
-  return allCells;
 }
 
 function endGame(){
@@ -147,16 +135,6 @@ function addReset(){
   btnReset.addEventListener("click",clearBoard);
   msg.appendChild(btnReset);
 }
-
-//  set up the board
-function startGame(){
-  clearBoard();
-  x_sound = new Audio('sounds/x_sound.mp3');
-  o_sound = new Audio('sounds/o_sound.mp3');
-  clap_sound = new Audio('sounds/68698__mikaelfernstrom__handclap.wav');
-  addListeners();
-}
-
 
 //  ********************
 //  ***  GAME LOGIC  ***
