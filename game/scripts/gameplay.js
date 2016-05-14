@@ -1,5 +1,6 @@
 window.onload = function() {
-
+  startGame();
+}; 
 /*
 
 Pseudo code:
@@ -156,7 +157,6 @@ function startGame(){
   addListeners();
 }
 
-startGame();
 
 //  ********************
 //  ***  GAME LOGIC  ***
@@ -206,8 +206,6 @@ function three(player,cell1,cell2,cell3){
 }
 
 
-
-};   // end of onLoad funtion
 
 
 
