@@ -72,6 +72,8 @@ function markCell(e) {
     positions[cell.id] = player;              // update the logic array
     cell.style.pointerEvents = 'none';  // turn off further cell clicks
   }
+  if (player==='X') x_sound.play();
+    else o_sound.play();
   if (winner()) {endGame()}
     else if (tie()) {tieGame()}
     else {alternatePlayer()}                 // switch the player
@@ -82,11 +84,9 @@ function alternatePlayer() {
   if (player==='X') {
     player='O';
     playerColor = "orange";
-    x_sound.play();
   } else {
     player='X';
     playerColor = "lightgreen";
-    o_sound.play();
     }
   say(player+"'s turn...",playerColor); 
 }
