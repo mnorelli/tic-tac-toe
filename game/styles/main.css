@@ -14,7 +14,7 @@
 */
 
 body {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Indie Flower', cursive !important
   font-size: 15pt;
   background: url(../images/purple-green-and-orange-pieces-of-chalk.jpg) #222;
   background-size: cover;
