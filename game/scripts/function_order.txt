@@ -1,0 +1,17 @@
+clearBoard
+getAllCells
+
+// then player clicks, which runs
+
+markCell
+
+//and either
+
+winner endGame  // or  tie tieGame  // or  alternatePlayer
+  addReset              addReset        say
+clearBoard              clearBoard
+
+
+
+
+
