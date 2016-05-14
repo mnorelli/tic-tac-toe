@@ -65,7 +65,6 @@ function say(status,color){
 // mark the current player value in the specified cell and switches player
 function markCell(e) {  
   var cell  = e.target
-  console.log("target: ",cell)
   var content = cell.textContent;
   if (content === "") {                 // if the cell is empty
     cell.textContent = player;          // display the player ltr in the cell
@@ -80,7 +79,6 @@ function markCell(e) {
 
 // player switching
 function alternatePlayer() {
-  console.log("before alternate: "+player);
   if (player==='X') {
     player='O';
     playerColor = "orange";
@@ -91,7 +89,6 @@ function alternatePlayer() {
     o_sound.play();
     }
   say(player+"'s turn...",playerColor); 
-  console.log("after alternate: "+player);
 }
 
 // sets up the board and empties the cell tracking object
