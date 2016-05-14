@@ -13,9 +13,11 @@
 
 */
 
-body {
+* {
   font-family: 'Indie Flower', cursive;
   font-size: 15pt;
+}
+body {
   background: url(../images/purple-green-and-orange-pieces-of-chalk.jpg) #222;
   background-size: cover;
   background-repeat: no-repeat;
