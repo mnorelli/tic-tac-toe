@@ -4,6 +4,18 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/*
+  SOURCES  
+  overlapping div idea from http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div  
+  grid divs from http://stackoverflow.com/questions/21014209/how-do-i-make-a-grid-with-html-and-css-with-divs
+  drop shadow from http://stackoverflow.com/questions/860972/drop-shadow-on-a-div-container
+  background image from http://justmytype.ca/mistakes-will-make-you-or-break-you/
+  reset image from http://www.clker.com/clipart-reset-button.html
+  text shadow from http://css3gen.com/text-shadow/
+  sounds from http://www.freesound.org/people/thavis360/sounds/178433/
+  chalk marks by http://www.moytsculpture.com/Dummies-Hide-Seek-II-Chalk-Series
+*/
+
 /* Toggle Styles */
 * {
   font-family: 'Indie Flower', cursive;
@@ -74,7 +86,12 @@
   float: left;
   color: #fff;
 }
-
+#x_score {
+    color: orange;
+}
+#o_score {
+    color: lightgreen;
+}
 
 #wrapper {
     padding-left: 0;
