@@ -85,6 +85,11 @@
   margin-left: 20px;
   float: left;
   color: #fff;
+    text-align: left;
+}
+.score p {
+    text-align: center;
+
 }
 #x_score {
     color: orange;
